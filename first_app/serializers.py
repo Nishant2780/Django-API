@@ -32,11 +32,11 @@ class TodoSerializer(serializers.ModelSerializer):
 
 class TimingTodoSerializer(serializers.ModelSerializer):
 
-    todo = TodoSerializer()        #It is used to show ForeignKey data but it will show only data we want to show
-    class Meta:
+    # todo = TodoSerializer()        #It is used to show ForeignKey data but it will show only data we want to show
+    class Meta:                     # if we do this then post request getting error
         model = TimingTodo
         fields = '__all__'
-        depth = 1               #Depth is used to show ForeignKey data, but one problem with depth is
+        # depth = 1               #Depth is used to show ForeignKey data, but one problem with depth is
                                 #it show all the data from ForeignKey table
 
 
