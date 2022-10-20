@@ -27,6 +27,8 @@ class TimingTodo(BaseModel):
     todo = models.ForeignKey(Todo, on_delete = models.CASCADE)
     timing = models.DateField()
 
+    def __str__(self):
+        return self.todo
 
 
 

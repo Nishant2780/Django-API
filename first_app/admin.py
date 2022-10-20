@@ -6,3 +6,4 @@ from .models import *
 # admin.site.register(Products_Details)
 
 admin.site.register(Todo)
+admin.site.register(TimingTodo)
