@@ -32,7 +32,8 @@ class TodoSerializer(serializers.ModelSerializer):
 
 class TimingTodoSerializer(serializers.ModelSerializer):
 
-    # todo = TodoSerializer()        #It is used to show ForeignKey data but it will show only data we want to show
+    # todo = TodoSerializer(read_only = True)       
+    todo = TodoSerializer()        #It is used to show ForeignKey data but it will show only data we want to show
     class Meta:                     # if we do this then post request getting error
         model = TimingTodo
         fields = '__all__'

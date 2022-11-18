@@ -143,6 +143,28 @@ class TodoView(APIView):              #<------- APIView [get, post, put, patch, 
                 'msg': 'Somthing Went Wrong', 
             })
 
+    def delete(self, request):
+        try:
+            data = request.data
+            if not data.get('uid'):
+                return Response({
+                    'status' : False,
+                    'msg' : 'uid is required', 
+                    'data' : {}
+                }) 
+            obj = Todo.objects.get(uid= data.get('uid'))
+            obj.delete()
+            return Response({
+                'status' : True,
+                'msg' : 'Deleted data', 
+            })
+        except Exception as e:
+            print(e)
+            return Response({
+                'status': False,
+                'msg': 'Invalid uid',
+                'data' : {} 
+            })
 
 class TodoViewSet(viewsets.ModelViewSet):   #--- with help of view set we can do crud opration with only 2 3 line
     queryset = Todo.objects.all()
